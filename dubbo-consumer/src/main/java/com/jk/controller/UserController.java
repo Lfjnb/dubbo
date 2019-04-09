@@ -3,10 +3,9 @@ package com.jk.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.jk.model.User;
 import com.jk.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController // ResponseBody+Controller注解的结合
 public class UserController {
@@ -23,4 +22,34 @@ public class UserController {
         return user;
     }
 
+    @RequestMapping("selectUser")
+    public List<User>  selectUser(){
+        List<User> list=userService.selectUser();
+        return list;
+    }
+
+    @RequestMapping("addUser")
+    public String addUser(User user){
+        userService.addUser(user);
+        return "1";
+    }
+
+    //    void deleteUser(Integer userId);
+    @RequestMapping("deleteUser")
+    public String deleteUser(Integer userId){
+        userService.deleteUser(userId);
+        return "1";
+    }
+
+    @RequestMapping("queryUserById")
+    public User queryUserById(Integer   userId){
+        User user=userService.queryUserById(userId);
+        return user;
+    }
+
+    @RequestMapping("updateUserById")
+    public String updateUserById(User user){
+        userService.updateUserById(user);
+        return "1";
+    }
 }

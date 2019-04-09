@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  dubbo:
+    application:
+
+      name: provider
+    registry:
+
+      address: zookeeper://127.0.0.1:2181
+
+    protocol:
+
+      name: dubbo
+
+      port: 20881
+  #datasource.driverClassName=com.mysql.jdbc.Driver
+  #datasource.url=jdbc:mysql://localhost:3306/1808b?useUnicode=true&characterEncoding=utf-8
+  #datasource.username=root
+  #datasource.password=root
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zuoye?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
